@@ -32,7 +32,7 @@ public:
 };
 
 
-void main3() {
+void main() {
     Solution a;
     vector<int>nums;
     cout << a.findPeakElement(nums);

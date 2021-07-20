@@ -7,12 +7,23 @@ class Solution {
 public:
     vector<int> grayCode(int n) {
         cout << "n="; cin >> n;
-        vector<int> res(pow(2,n));
-        int diff = pow(2, n - 1);
+        vector<bool> check(pow(2,n),false);
+        vector<int> res;
         int max = pow(2, n) - 1;
-        for (int i = 0; i <= diff-1; ++i) {
-            res[i] = i;
-            res[max - i] = i + diff;
+        res.push_back(0);
+        check[0] = true;
+        for (int i = 1; i < pow(2, n) ; ++i) {
+            int j = 0;
+            int expnt = res[i - 1] / pow(2, j);
+            int tmp = res[i - 1] + pow(2, j) * pow(-1, expnt);
+        
+            while (check[tmp]) {
+                ++j;
+                expnt = res[i - 1] / pow(2, j);
+                tmp = res[i - 1] + pow(2, j) * pow(-1, expnt);
+            }
+            check[tmp] = true;
+            res.push_back(tmp);
         }
         
         return res;
@@ -20,7 +31,7 @@ public:
     }
 };
 
-void main1() {
+void main() {
     Solution a;
     int n = 0;
     vector<int> x = a.grayCode(n);

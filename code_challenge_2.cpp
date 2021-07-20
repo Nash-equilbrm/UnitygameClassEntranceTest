@@ -40,7 +40,7 @@ public:
 
 
 
-void main2() {
+void main() {
     Solution a;
     vector<int>nums1;
     vector<int>nums2;
